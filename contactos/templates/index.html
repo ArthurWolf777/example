@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block info %} Inicio {% endblock %}
+
+{% block title %} 
+Agenda - Contactos
+{% endblock %}
+
+{% block content %}
+
+<button class="new-contact-button done" id="new-contact"><a href="{% url 'new_contact'%}">Agregar contacto</a></button>
+    
+    {% for contacto in contactos %}
+        <div class="contacto-container">
+            <p class="update">{{ contacto.updated_at}}</p>
+            <li class="contacto"><a href="/contacto/editar/{{contacto.id}}/">{{ contacto.name }} {{ contacto.lastname }} </a></li>
+            <button class="edit-button"><a href="/contacto/editar/{{contacto.id}}/">editar</a></button> <button class="delete-button"><a href="/delete/{{contacto.id}}/">eliminar</a></button>
+        </div>
+    {% endfor %}
+
+{% endblock %}

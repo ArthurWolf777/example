@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+{% block info %} Editar {% endblock %}
+
+{% block title %} 
+Agenda - Editar
+{% endblock %}
+
+{% block content %}
+<nav class="tabs-menu" id="tabs-menu">
+    <li class="tab-text">Contacto</li>
+    <li class="tab-text active">Dirección</li>
+    <li class="tab-text">Teléfono</li>
+</nav>
+
+<div class="panel-form">
+
+    <form name="ContactForm" action="/contacto/editar/nombre/{{contact_id}}/" class="form-contact active tab" method="POST">{% csrf_token %}
+        
+        <label class="text-form" for="name">Nombre(s)*</label>
+        <input type="text" name="name" placeholder="{{ savedname }}"> <!--{{ savedname }}-->
+        
+        <label class="text-form" for="lastname">Apellido(s)*</label>
+        <input type="text" name="lastname" placeholder="{{ lastname }}"> <!--{{ lastname }}-->
+        
+
+        <label class="text-form" for="photo">Fotografía</label>
+        <div class="div-form">
+            <p class="info">Actualmente</p>
+        </div>
+        <input type="file" name="photo" placeholder="--">
+        
+        <label class="text-form" for="birthday">Fecha de Nacimiento*</label>
+        <input type="date" name="birthday">
+        
+        <div class="button-panel">
+            <button class="back" id="cancel-create"><a href="/inicio">Regresar</a></button>
+            <button class="done" id="create-contact" type="submit" value="save">Actualizar Contacto</button>
+        </div>
+    </form>
+
+
+
+    <form name="/contacto/editar/direccion/{{contact_id}}/" action="" class="form-contact tab" method="POST">{% csrf_token %}
+        <label class="text-form" for="street">Calle*</label>
+        <input type="text" name="street" placeholder="calle">
+        
+        <label class="text-form" for="exterior_number">Número exterior*</label>
+        <input type="text" name="exterior_number" placeholder="numero exterior">
+        
+        <label class="text-form" for="internal_number">Número interior*</label>
+        <input type="text" name="internal_number" placeholder="numero interior">
+
+        <label class="text-form" for="neighborhood">Colonia*</label>
+        <input type="text" name="neighborhood" placeholder="colonia">
+
+        <label class="text-form" for="municipality">Municipio*</label>
+        <input type="text" name="municipality" placeholder="municipio">
+<!--
+-->     
+        {{ state_select }}
+
+        <label class="text-form" for="references">Referencias*</label>
+        <textarea name="references" cols="60" rows="10"></textarea>
+        
+        <div class="button-panel">
+            <button class="back" id="cancel-create"><a href="/inicio">Regresar</a></button>
+            <button class="done" id="create-contact" type="submit" value="save">Actualizar Contacto</button>
+        </div>
+    </form>
+
+    <form action=""  method="POST" class="form-contact tab">{% csrf_token %}
+        <li class="new-contact-li" id="add-phone">Agregar Teléfono</li>
+        <section id="add_phone_here"   id="phone_section">
+            <div  class="phone_form not_visible"> 
+                {{ phoneform.as_div }}
+                <li class="remove-phone" id="remove-phone">Cancelar</li>
+            </div>
+            
+            
+            
+        </section>
+
+            <section class="phonelist">
+                <div>
+                    <div>
+                        <label >Tipo*</label>
+                        <p>{{ PhoneType }}</p>
+                    </div>
+                    <div>
+                        <label >Alias*</label>
+                        <p>{{ PhoneAlias }}</p>
+                    </div>
+                    
+                    <div>
+                        <label >Numero*</label>
+                        <p>{{ Actualnumber }}</p>
+                    </div>
+                    
+                    <li ><a href="">Eliminar</a></li>
+                </div>
+            </section>
+
+        
+
+        
+        <div class="button-panel">
+            <button class="back" id="cancel-create"><a href="/inicio">Regresar</a></button>
+            <button class="done" id="create-contact" type="submit" value="save">Actualizar Contacto</button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

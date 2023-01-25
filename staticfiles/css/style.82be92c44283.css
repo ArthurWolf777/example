@@ -1,0 +1,286 @@
+/*ESTILOS GLOBALES */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    color: azure;
+    font-size: 20px;
+}
+
+.header-conteiner{
+    display: flex;
+    background: #353a3fff;
+    padding: 1% 1%;
+}
+
+.content-conteiner{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+}
+
+button{
+    border: none;
+}
+
+.done, .new-contact-li{
+    background: #187ef7ff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-left: 2%;
+    margin-right: 2%;
+
+    cursor: pointer;
+    list-style: none;
+}
+
+.done a{
+    text-decoration: none;
+}
+
+.back{
+    background: #6d757cff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-left: 2%;
+}
+
+.back a{
+    text-decoration: none;
+}
+
+.new-contact-button, .new-contact-li{
+    margin-left: auto;
+    margin-right: 15%;
+    margin-top: 10px;
+}
+
+.disabled-button{
+    background: #6d757cff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-left: 2%;
+
+    margin-left: auto;
+    margin-right: 15%;
+    margin-top: 10px;
+    list-style: none;
+}
+
+input, textarea, select, .div-form, .phonelist div p{
+    width: 90%;
+    border: 1px solid #6d757cff;
+    border-radius: 3px;
+    color: #353a3fff;
+    font-size: 0.90rem;
+    margin-top: 5px;
+    margin-left: 2%;
+}
+
+/*CONTACTOS*/
+.contacto-container{
+    width: 65%;
+    margin-top: 3px;
+    list-style: none;
+    padding: 1%;
+    border: 1px solid #353a3fff;
+    border-radius: 3px;
+}
+
+.contacto-container li a, .contacto-container p{
+    color: #353a3fff;
+    text-decoration: none;
+}
+
+.contacto-container p{
+    text-align: end;
+    font-size: 0.60rem;
+}
+
+.edit-button a, .delete-button a{
+    text-decoration: none;
+    font-size: 0.60rem;
+}
+.edit-button, .delete-button{
+    
+    padding: 5px 10px;
+    font-size: 0.60rem;
+    border-radius: 2px;
+
+
+    cursor: pointer;
+}
+
+.edit-button{
+    background: #6d757cff;
+}
+
+.delete-button{
+    background: red;
+}
+
+
+
+/*ESTILOS DE LOS FORMULARIOS */
+
+.text-form, option,  label{
+    font-size: 0.90rem;
+    color: black;
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 2%;
+}
+
+.form-contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: min-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border: 1px solid #6d757cff;
+    border-radius: 3px;
+}
+
+.button-panel{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background: rgb(221, 221, 221);
+    border-top: 1px solid #6d757cff;
+    padding: 1% 0%;
+}
+
+.info{
+    border: 1px solid #353a3fff;
+    color: #353a3fff;
+    background: rgb(221, 221, 221);
+    width: 20%;
+    text-align: center;
+}
+
+/*TABS ESTILOS */
+
+.panel-form{
+    
+    width: 60%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabs-menu{
+    margin-top: 20px;
+    display: flex;
+    width: 60%;
+}
+
+.tab-text{
+    color: #187ef7ff;
+    cursor: pointer;
+    font-size: 0.90rem;
+    padding: 1% 1%;
+    list-style: none;
+
+    border: 1px solid #6d757cff;
+    border-bottom: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    position: relative;
+
+    z-index: 0;
+}
+
+.tab-text:hover, .active{
+    
+    background-color: #ffff;
+    color: #6d757cff;
+    
+}
+
+.active li{
+    z-index: 20;
+}
+
+.tab{
+    margin-top: -1px;
+    position: absolute;
+    left: -10000px;
+}
+
+.active{
+    position: inherit;
+    left: 0;
+}
+
+/*FORM PHONE STYLES*/
+
+section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #353a3fff;
+    font-size: 0.90rem;
+    margin-top: 5px;
+    margin-left: 2%;
+
+}
+
+.phone_form{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+
+}
+
+section li{
+    background: yellow;
+    color: #353a3fff;
+    border-radius: 5px;
+    font-size: 0.80rem;
+    padding: 1% 1%;
+    height: 90%;
+    list-style: none;
+
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.not_visible{
+    display: none;
+}
+
+.add_phone_here{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid magenta;
+    width: 100%;
+}
+
+.phonelist div{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+
+.phonelist div div{
+    display: flex;
+    flex-direction: column;
+}
+
+.phonelist a{
+    text-decoration: none;
+    color: #353a3fff;
+    font-size: 0.80rem;
+
+}

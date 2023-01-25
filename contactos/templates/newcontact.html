@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block info %} Nuevo Contacto {% endblock %}
+
+{% block title %} 
+Agenda - Nuevo
+{% endblock %}
+
+{% block content %}
+
+<div class="panel-form">
+    <form action=" " method="post" class="form-contact">
+        
+        {% csrf_token %}
+        
+        <label for="name" class="text-form">Nombre(s)*</label>
+        <input type="text" name="name" placeholder="nombre(s)" maxlength="60" minlength="1" required="">
+        
+        <label for="lastname" class="text-form" >Apellido(s)*</label>
+        <input type="text" name="lastname" placeholder="apellido(s)" maxlength="120" minlength="1" required="">
+        
+        <label for="photo" class="text-form">Fotografía</label>
+        <input type="file" name="photo" placeholder="--">
+        
+        <label for="birthday" class="text-form">Fecha de Nacimiento*</label>
+        <input type="date" name="birthday" required="">
+        
+        <div class="button-panel">
+            <button class="back" id="cancel-create"><a href="/inicio">Cancelar</a></button>
+            <button class="done" id="create-contact" type="submit" value="save">Crear Contacto</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

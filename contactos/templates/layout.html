@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block info %} {% endblock %} | Agenda</title>
+    
+
+</head>
+<body>
+    <header class="header-conteiner">
+        <h2 class="head">{% block title %} {% endblock %}</h2>
+    </header>
+    <div class="content-conteiner">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/tabs.js' %}" defer></script>
+<script src="{% static 'js/addphone.js' %}" defer></script>
+</html>

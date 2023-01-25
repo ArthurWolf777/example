@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block info %} TEST {% endblock %}
+
+{% block title %} 
+Agenda - TEST
+{% endblock %}
+
+{% block content %}
+<div class="panel-form">
+    <form action=""  method="get" class="form-contact tab active">{% csrf_token %}
+        <li class="new-contact-li" id="add-phone">Agregar Teléfono</li>
+        <section id="add_phone_here"   id="phone_section">
+            <div  class="phone_form not_visible"> 
+                {{ phoneform.as_div }}
+                <li class="remove-phone" id="remove-phone">Cancelar</li>
+            </div>
+            
+            
+            
+        </section>
+
+        <div class="button-panel">
+            <button class="back" id="cancel-create"><a href="/inicio">Regresar</a></button>
+            <button class="done" id="create-contact" type="submit" value="save">Actualizar Contacto</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
