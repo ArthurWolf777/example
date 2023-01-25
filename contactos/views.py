@@ -81,7 +81,7 @@ def edit_contact(request, id):
 
             phone.save()
 
-            return redirect('edit_contact', print('telefono actualizado'))
+            return redirect('index')
 
         
 
