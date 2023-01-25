@@ -30,6 +30,7 @@ urlpatterns = [
     path('contacto/editar/nombre/<int:id>/', contactos.views.edit_name, name="edit_contact_name"),
     path('contacto/editar/direccion/<int:id>/', contactos.views.edit_adress, name="contact_name_ban"),
     path('delete/<int:id>/', contactos.views.delete_contact, name="delete"),
+    path('delete/phone/<int:id>/', contactos.views.delete_phone, name="delete_phone"),
     path('test/', contactos.views.test_code, name="test")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

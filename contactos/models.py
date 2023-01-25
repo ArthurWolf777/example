@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 
+
+###### ITERACIÓN DE LISTA DE ESTADOS, PARA INDEXAR CADA UNO ########
 def all_states():
     states_list = ['SELECCIONAR', 'Aguascalientes', 'Baja California', 'Baja California Sur', 'Campeche', 'Coahuila', 'Colima', 'Chiapas', 'Chihuahua',  'Ciudad de México', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'México', 'Michoacán', 'Morelos', 'Nayarit', 'Nuevo León', 'Oaxaca', 'Puebla', 'Querétaro', 'Quintana Roo', 'San Luis Potosí', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatán', 'Zacatecas']
     index_list = range(len(states_list))
@@ -10,11 +12,14 @@ def all_states():
 
 states = all_states()
 
+##### TIPOS DE TELÉFONO #########
 phones_types = [
     (0, 'Móvil'),
     (1, 'Casa') 
 ]
 
+
+####### MODELO CONTACTOS 
 class Contact(models.Model):
     name = models.CharField(max_length=60)
     lastname = models.CharField(max_length=120)
@@ -22,7 +27,7 @@ class Contact(models.Model):
     birthday = models.DateField()
     updated_at = models.DateTimeField(auto_now_add=True)
 
-
+########## MODELO DIRECCIÓN RELACIÓN 1:N
 class Address(models.Model):
     street = models.CharField(max_length=255)
     exterior_number = models.CharField(max_length=10)
@@ -33,7 +38,7 @@ class Address(models.Model):
     references = models.TextField()
     contact = models.ForeignKey(Contact, null=False, on_delete=models.CASCADE)
 
-
+############### MODELO TELÉFONO RELACIÓN 1:N
 class Phone(models.Model):
     contact = models.ForeignKey(Contact, null=False, related_name='Phones' ,on_delete=models.CASCADE)
     phone_type_options = models.CharField(max_length=10, choices=phones_types, default=0)

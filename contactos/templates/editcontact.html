@@ -7,8 +7,8 @@ Agenda - Editar
 
 {% block content %}
 <nav class="tabs-menu" id="tabs-menu">
-    <li class="tab-text">Contacto</li>
-    <li class="tab-text active">Dirección</li>
+    <li class="tab-text  active">Contacto</li>
+    <li class="tab-text">Dirección</li>
     <li class="tab-text">Teléfono</li>
 </nav>
 
@@ -40,7 +40,7 @@ Agenda - Editar
 
 
 
-    <form name="/contacto/editar/direccion/{{contact_id}}/" action="" class="form-contact tab" method="POST">{% csrf_token %}
+    <form name="" action="/contacto/editar/direccion/{{contact_id}}/" class="form-contact tab" method="POST">{% csrf_token %}
         <label class="text-form" for="street">Calle*</label>
         <input type="text" name="street" placeholder="calle">
         
@@ -80,27 +80,29 @@ Agenda - Editar
             
         </section>
 
+        {% for Phonedata in Phone_list %}
+
             <section class="phonelist">
                 <div>
                     <div>
                         <label >Tipo*</label>
-                        <p>{{ PhoneType }}</p>
+                        <p>{{ Phonedata.phone_type_options }}</p>
                     </div>
                     <div>
                         <label >Alias*</label>
-                        <p>{{ PhoneAlias }}</p>
+                        <p>{{ Phonedata.alias }}</p>
                     </div>
                     
                     <div>
                         <label >Numero*</label>
-                        <p>{{ Actualnumber }}</p>
+                        <p>{{ Phonedata.number }}</p>
                     </div>
                     
-                    <li ><a href="">Eliminar</a></li>
+                    <li ><a href="/delete/phone/{{ Phonedata.id }}/">Eliminar</a></li>
                 </div>
             </section>
 
-        
+        {% endfor %}
 
         
         <div class="button-panel">

@@ -3,20 +3,25 @@ from contactos.models import Contact, Address, Phone
 from .forms import states_options, phone_form
 from datetime import datetime
 
-# Create your views here.
+# #TEST FULL STACK DEV #########################################
 
 state_select =  states_options()
 phoneform = phone_form
 
+
+#PANTALLA 0002 INDEX ############################
 def index(request):
     contactos = Contact.objects.order_by('name')
     return render(request, 'index.html', {
         'contactos': contactos
     })
 
+
+
+#PANTALLA 0003 NUEVO CONTACTO #########################################
 def new_contact(request):
     
-    
+
     if request.method == 'POST':
         
         birthday_string = request.POST['birthday']
@@ -40,6 +45,8 @@ def new_contact(request):
     else:
         return render(request, 'newcontact.html')
 
+
+#PANTALLA 0004 EDITAR CONTACTO #########################################
 def edit_contact(request, id):
     
     contact_id = Contact.objects.get(pk=id)
@@ -80,17 +87,12 @@ def edit_contact(request, id):
 
 
     try:
-        ContactPhones = Phone.objects.get(pk=id)
-        
-        ActualNumber = ContactPhones.number
-        PhoneType = ContactPhones.phone_type_options
-        PhoneAlias = ContactPhones.alias
-        phonekey = ContactPhones.id
+        Phones_list = Phone.objects.filter(contact_id=contact_id)
         
 
     except Phone.DoesNotExist:
         
-        ActualNumber = 7777
+        Phones_list = None
 
         
     return render(request, 'editcontact.html', 
@@ -100,18 +102,11 @@ def edit_contact(request, id):
                 'contact_id' : primary_key,
                 'state_select' : state_select,
                 'phoneform' : phoneform,
-                'Actualnumber' : ActualNumber,
-                'PhoneType' : PhoneType,
-                'PhoneAlias' : PhoneAlias,
-                'Phonekey' : phonekey
-                }, print(ContactPhones))
+                'Phone_list' : Phones_list
+                })
 
-def test_code(request):
-    
-    phoneform = phone_form
 
-    return render(request, 'test.html', {'phoneform' : phoneform})
-
+#FUNCIÓN BORRAR CONTACTO, BORRA LOS DATOS DE RELACIPON EN CASCADA #########################################
 def delete_contact(request, id):
 
     contact = Contact.objects.get(pk=id)
@@ -120,6 +115,8 @@ def delete_contact(request, id):
 
     return redirect('index')
 
+
+#FUNCIÓN EDITAR INFORMACIÓN DE CONTACTO #########################################
 def edit_name(request, id):
             if request.method == 'POST':
 
@@ -143,8 +140,13 @@ def edit_name(request, id):
             return redirect('index')
 
 
+
+#FUNCIÓN EDITAR DIRECCIÓN DEL CONTACTO, RELACIÓN 1:1 #########################################
+
 def edit_adress(request, id):
             if request.method == 'POST':
+
+                contact_id = Contact.objects.get(pk=id)
 
                 street = request.POST['street']
                 exterior_number = request.POST['exterior_number']
@@ -153,7 +155,6 @@ def edit_adress(request, id):
                 municipality = request.POST['municipality']
                 state = request.POST['states']
                 references = request.POST['references']
-                contact_id = Address.id
 
                 address = Address(
                     street = street,
@@ -163,7 +164,7 @@ def edit_adress(request, id):
                     municipality = municipality,
                     state = state,
                     references = references,
-                    contact_id = contact_id
+                    contact_id = contact_id.id
                 )
 
                 address.save()
@@ -171,3 +172,21 @@ def edit_adress(request, id):
 
             return redirect('index')
 
+
+#FUNCIÓN ELIMINAR TELEFONO #########################################
+
+def delete_phone(request, id):
+
+    Phone_to_delete = Phone.objects.get(pk=id)
+    Phone_to_delete.delete()
+
+    return redirect('index')
+
+
+#VISTA DE PRUEBAS PARA FRONTEND #########################################
+
+def test_code(request):
+    
+    phoneform = phone_form
+
+    return render(request, 'test.html', {'phoneform' : phoneform})
