@@ -22,7 +22,7 @@ def index(request):
 def new_contact(request):
     
 
-    if request.method == 'POST':
+    if request.method == 'GET':
         
         birthday_string = request.POST['birthday']
         birthday_datetime = datetime.strptime(birthday_string, "%Y-%m-%d")
@@ -76,7 +76,6 @@ def edit_contact(request, id):
                 alias = alias,
                 number = number,
                 contact_id = contact_id
-
             )
 
             phone.save()

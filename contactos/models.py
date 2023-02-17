@@ -36,7 +36,7 @@ class Address(models.Model):
     municipality = models.CharField(max_length=255)
     state = models.IntegerField(choices=states, default=0)
     references = models.TextField()
-    contact = models.ForeignKey(Contact, null=False, on_delete=models.CASCADE)
+    contact = models.ForeignKey(Contact, null=False, related_name='Address', on_delete=models.CASCADE)
 
 ############### MODELO TELÉFONO RELACIÓN 1:N
 class Phone(models.Model):
